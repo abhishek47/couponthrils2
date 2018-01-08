@@ -13,14 +13,10 @@ class CouponsController extends Controller
      */
     public function index()
     {
-        $data['categories'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getCategories/json"));
+       
+        $data['coupons'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/50/1/json"));
 
-        $data['stores'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getCategories/json"));
-
-        $data['coupons'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getOnlyCoupons/json"));
-
-        $data['deals'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getCategories/json"));
-
+      
 
        return view('coupons.index', $data);
 

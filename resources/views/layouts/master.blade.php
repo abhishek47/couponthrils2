@@ -255,7 +255,7 @@
                         <div class="row row-tb-20">
                             <div class="footer-col col-sm-6">
                                 <div class="footer-about">
-                                    <img class="mb-40" src="assets/images/logo_light.png" width="250" alt="">
+                                    <img class="mb-40" src="images/logo.png" width="250" alt="">
                                     <p class="color-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam dolores quidem mollitia id ipsa nisi necessitatibus iure repudiandae aperiam, odit ipsam dolor fugiat corporis nesciunt illo nemo minus.</p>
                                 </div>
                             </div>
@@ -352,7 +352,7 @@
         <footer id="mainFooter" class="main-footer">
             <div class="container">
                 <div class="row">
-                    <p>Copyright &copy; 2016 . All rights reserved.</p>
+                    <p>Copyright &copy; {{ date('Y') }} . All rights reserved. Powered By <a style="color: green;" href="http://www.trumpetstechnologies.com">Trumpets</a>.</p>
                 </div>
             </div>
         </footer>
@@ -363,11 +363,7 @@
     <!-- END WRAPPER                               -->
     <!-- ––––––––––––––––––––––––––––––––––––––––– -->
 
-    <!-- ========== BUY THEME ========== -->
-    <a href="https://google.com" class="buy-theme" data-href="https://themeforest.net/item/friday-coupons-deals-discounts-promo-codes-template/19577226?ref=CODASTROID" target="_blank" id="buy_theme">
-        <i class="fa fa-credit-card"></i>
-    </a>
-
+  
     <!-- ––––––––––––––––––––––––––––––––––––––––– -->
     <!-- BACK TO TOP                               -->
     <!-- ––––––––––––––––––––––––––––––––––––––––– -->

@@ -4,11 +4,50 @@
 
 @section('content')
 
-<div class="page-container ptb-60">
+	 <!-- Page Container -->
+            <div class="page-container ptb-60">
                 <div class="container">
+                   <section class="store-header-area panel t-xs-center t-sm-left mb-30">
+                        <div class="row row-rl-10">
+                            <div class="col-sm-3 col-md-2 t-center">
+                                <figure class="pt-20 pl-10">
+                                    <img src="{{ $storeLogo }}" alt="">
+                                </figure>
+                            </div>
+                            <div class="col-sm-5 col-md-6">
+                                <div class="store-about ptb-30">
+                                    <h3 class="mb-10">{{ $storeName }}</h3>
+                                    <div class="rating mb-10">
+                                        <span class="rating-stars rate-allow" data-rating="3">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o star-active"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </span>
+                                        <span class="rating-reviews">
+                                ( <span class="rating-count">{{ count($coupons) }}</span> offers )
+                                        </span>
+                                    </div>
+                                    <p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio officiis at accusantium ducimus excepturi cumque ad commodi libero nihil rem voluptatibus veniam ipsa ullam esse quia quae fuga, quidem iusto.</p>
+                                    <p class="mb-20">Sunt ea hic nam dicta odit quam obcaecati et accusamus exercitationem fuga earum incidunt tempore iure aperiam?</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+
+
+
+
+
+
+
+
+
 
                     <!-- Coupons Area -->
-                    <div class="section coupons-area coupons-area-grid">
+                    <section class="section coupons-area coupons-area-grid">
 
                         <!-- Page Control -->
                         <header class="page-control panel ptb-15 prl-20 pos-r mb-30">
@@ -37,24 +76,10 @@
                         <div class="row row-masnory row-tb-20">
                           @foreach($coupons as $coupon)
                             <div class="col-sm-6 col-md-4 col-lg-3">
-                                <div  class="coupon-single panel t-center">
+                                <div class="coupon-single panel t-center">
                                     
                                     <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="text-center p-20">
-                                            <?php $pieces = parse_url($coupon->LINK);
-                                              $domain = isset($pieces['host']) ? $pieces['host'] : '';
-                                              if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
-                                                $logo_path = "https://logo.clearbit.com/" . $regs['domain'];
-                                                
-                                              } else {
-                                                 $logo_path = '';
-                                              } ?>
-                                                <img class="store-logo" src="{{$logo_path}}" alt="">
-                                            </div>
-                                            <!-- end media -->
-                                        </div>
-                                        <!-- end col -->
+                                        
 
                                         <div class="col-xs-12">
                                             <div class="panel-body">
@@ -135,41 +160,16 @@
                             </div>
                                 @endforeach
                             </div>
-                        </div>
+                        </section>
 
-                        <!-- Page Pagination -->
-                        <div class="page-pagination text-center mt-30 p-10 panel">
-                            <nav>
-                                <!-- Page Pagination -->
-                                <ul class="page-pagination">
-                                    <li><a class="page-numbers previous" href="">Previous</a>
-                                    </li>
-
-                                    @for($i = 1; $i <= $pages; $i++)
-                                        @if($i == 11)
-\                                         <li><span class="page-numbers">...</span></li> 
-                                        @endif
-                                        @if($i > 10 && $i < $pages-7)
-
-                                        @else
-                                        
-                                        <li><a href="{{ '/deals?page=' . $i }}" class="page-numbers {{ $page == $i ? 'current': '' }}">{{ $i }}</a>
-                                        </li>
-                                        @endif
-                                    @endfor
-                                   
-                                    <li><a href="" class="page-numbers next">Next</a>
-                                    </li>
-                                </ul>
-                                <!-- End Page Pagination -->
-                            </nav>
-                        </div>
-                        <!-- End Page Pagination -->
-                    </div>
-                    <!-- End Coupons Area -->
 
                 </div>
+
+
+
+                
             </div>
+            <!-- End Page Container -->
 
 
 

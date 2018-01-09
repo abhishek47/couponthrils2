@@ -213,8 +213,7 @@
                                                 <ul class="deal-meta list-inline mb-10">
                                                     <li class="color-green"><i class="ico fa fa-check mr-5"></i>Verifed</li>
                                                 </ul>
-                                                  <?php preg_match_all('!\d+!', $banner->DISCOUNT, $matches); ?>
-                                                <h4 class="color-green mb-10 t-uppercase">{{$matches[0][0]}}% OFF</h4>
+                                               
                                                 <h5 class="deal-title mb-10">
 					                                <a href="#">{{ $coupon->DISCOUNT}}</a>
 					                            </h5>

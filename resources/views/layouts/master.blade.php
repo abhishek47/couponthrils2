@@ -125,9 +125,9 @@
                                     <a href="#"><i class="fa fa-inr"></i>INR </a>
                                     
                                 </li>
-                                <li><a href="signin.html"><i class="fa fa-lock"></i>Sign In</a>
+                                <li><a href="/login"><i class="fa fa-lock"></i>Sign In</a>
                                 </li>
-                                <li><a href="signup.html"><i class="fa fa-user"></i>Sign Up</a>
+                                <li><a href="/register"><i class="fa fa-user"></i>Sign Up</a>
                                 </li>
                             </ul>
                         </div>
@@ -205,19 +205,19 @@
                         </div>
                         <div id="header-navbar" class="nav-collapse">
                             <ul class="nav-menu">
-                                <li class="active">
+                                <li class="{{ request()->is('/') ? 'active' : '' }}">
                                     <a href="/">Home</a>
                                 </li>
-                                <li >
+                                <li class="{{ request()->is('deals*') ? 'active' : '' }}">
                                     <a href="/deals">Deals &amp; Coupons</a>
                                    
                                 </li>
                                 
-                                <li>
+                                <li class="{{ request()->is('stores*') ? 'active' : '' }}">
                                     <a href="/stores">Stores</a>
                                     
                                 </li>
-                                <li>
+                                <li class="{{ request()->is('contact*') ? 'active' : '' }}>
                                     <a href="/contact">Contact Us</a>
                                     
                                 </li>
@@ -255,7 +255,7 @@
                         <div class="row row-tb-20">
                             <div class="footer-col col-sm-6">
                                 <div class="footer-about">
-                                    <img class="mb-40" src="images/logo.png" width="250" alt="">
+                                    <img class="mb-40" src="/images/logo.png" width="250" alt="">
                                     <p class="color-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam dolores quidem mollitia id ipsa nisi necessitatibus iure repudiandae aperiam, odit ipsam dolor fugiat corporis nesciunt illo nemo minus.</p>
                                 </div>
                             </div>

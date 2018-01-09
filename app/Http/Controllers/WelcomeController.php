@@ -15,7 +15,7 @@ class WelcomeController extends Controller
 
     	$data['stores'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getStores/Y/json"));
 
-    	$data['couponsData'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/20/1/json"));
+    	$data['couponsData'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/100/1/json"));
 
     	$data['dealsData'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/20/1/json"));
 

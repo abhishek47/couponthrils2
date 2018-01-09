@@ -18,3 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/deals', 'CouponsController@index')->name('coupons');
+
+Route::get('/stores', 'StoresController@index')->name('stores');
+
+Route::get('/stores/{storeID}', 'StoresController@show')->name('stores');

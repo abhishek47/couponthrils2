@@ -13,12 +13,23 @@ class CouponsController extends Controller
      */
     public function index()
     {
-       
-        $data['coupons'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/50/1/json"));
+       if(request()->has('page'))
+       {
+         $page = request('page');
+       } else {
+        $page = 1;
+       }
 
-      
+        $data['coupons'] = 
+            json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/50/". $page . "/json"));
 
-       return view('coupons.index', $data);
+        $data['page'] = $page;
+        
+        $data['totalCoupons'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getCouponCount"));    
+        
+        $data['pages'] = $data['totalCoupons'] / 50;
+        
+        return view('coupons.index', $data);
 
     }
 

@@ -231,8 +231,13 @@
                                     <a href="/stores">Stores</a>
                                     
                                 </li>
-                                <li class="{{ request()->is('contact*') ? 'active' : '' }}>
+                                <li class="{{ request()->is('contact*') ? 'active' : '' }}">
                                     <a href="/contact">Contact Us</a>
+                                    
+                                </li>
+
+                                 <li class="{{ request()->is('home*') ? 'active' : '' }}">
+                                    <a href="/home">My Account</a>
                                     
                                 </li>
                                 

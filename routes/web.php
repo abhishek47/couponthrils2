@@ -16,6 +16,8 @@ Route::get('/', 'WelcomeController@index')->name('landing');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/profile', 'HomeController@update')->name('profile.update');
+Route::post('/profile/password', 'HomeController@updatePassword')->name('profile.password');
 
 Route::get('/deals', 'CouponsController@index')->name('coupons');
 Route::post('/coupons/redeem', 'CouponsController@redeem')->name('coupons')->middleware('auth');

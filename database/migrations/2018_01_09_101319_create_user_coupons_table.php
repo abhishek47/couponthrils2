@@ -15,6 +15,8 @@ class CreateUserCouponsTable extends Migration
     {
         Schema::create('user_coupons', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->json('coupon');
             $table->timestamps();
         });
     }

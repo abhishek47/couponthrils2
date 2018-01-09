@@ -270,19 +270,25 @@
                             <div class="footer-col col-sm-6">
                                 <div class="footer-about">
                                     <img class="mb-40" src="/images/logo.png" width="250" alt="">
-                                    <p class="color-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam dolores quidem mollitia id ipsa nisi necessitatibus iure repudiandae aperiam, odit ipsam dolor fugiat corporis nesciunt illo nemo minus.</p>
+                                    <p class="color-light">Hello we are CouponThrills. We are here to provide you the best offers through our coupons.</p>
                                 </div>
                             </div>
                             <div class="footer-col col-sm-6">
                                 <div class="footer-top-twitter">
-                                    <h2 class="color-lighter">Twitter Feed</h2>
+                                    <h2 class="color-lighter">Contact Details</h2>
                                     <ul class="twitter-list">
                                         <li class="single-twitter">
-                                            <p class="color-light"><i class="ico fa fa-twitter"></i><a href="#">@masum_rana :</a> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in reprehenderit.</p>
+                                            <p class="color-light"><i class="ico fa fa-map-marker"></i> India</p>
                                         </li>
+
+                                         <li class="single-twitter">
+                                            <p class="color-light"><i class="ico fa fa-envelope"></i> couponthrills@gmail.com</p>
+                                        </li>
+
                                         <li class="single-twitter">
-                                            <p class="color-light"><i class="ico fa fa-twitter"></i><a href="#">@masum_rana :</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione id corrupti iusto cupiditate omnis.</p>
+                                            <p class="color-light"><i class="ico fa fa-globe"></i> http://www.stallionstudios.in</p>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -294,56 +300,36 @@
                                 <div class="footer-links">
                                     <h2 class="color-lighter">Quick Links</h2>
                                     <ul>
-                                        <li><a href="deals_grid.html">Latest Deals</a>
+                                        <li><a href="/deals">Latest Deals</a>
                                         </li>
-                                        <li><a href="coupons_grid.html">Newest Coupons</a>
+                                        <li><a href="/stores">Store Coupons</a>
                                         </li>
-                                        <li><a href="contact_us_02.html">Contact Us</a>
+                                        <li><a href="/contact">Contact Us</a>
                                         </li>
-                                        <li><a href="404.html">Error 404</a>
+                                        <li><a href="/404">Error 404</a>
                                         </li>
-                                        <li><a href="terms_conditions.html">Terms of Use</a>
+                                        <li><a href="/terms">Terms of Use</a>
                                         </li>
-                                        <li><a href="faq.html">FAQs</a>
+                                        <li><a href="/privacy">Privacy Policy</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="footer-col col-sm-6">
                                 <div class="footer-top-instagram instagram-widget">
-                                    <h2>Instagram Widget</h2>
+                                    <h2>High End Brands</h2>
                                     <div class="row row-tb-5 row-rl-5">
 
-
+                                     <?php 
+                                        $stores = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getStores/Y/json"));
+                                        ; ?>
+                                        @foreach(array_slice($stores, 0, 9) as $store)
                                         <div class="instagram-widget__item col-xs-4">
-                                            <img src="assets/images/instagram/instagram_01.jpg" alt="">
+                                            <img src="{{ $store->STORE_LOGO}}" alt="">
                                         </div>
+                                        @endforeach
 
-
-                                        <div class="instagram-widget__item col-xs-4">
-                                            <img src="assets/images/instagram/instagram_02.jpg" alt="">
-                                        </div>
-
-
-                                        <div class="instagram-widget__item col-xs-4">
-                                            <img src="assets/images/instagram/instagram_03.jpg" alt="">
-                                        </div>
-
-
-                                        <div class="instagram-widget__item col-xs-4">
-                                            <img src="assets/images/instagram/instagram_04.jpg" alt="">
-                                        </div>
-
-
-                                        <div class="instagram-widget__item col-xs-4">
-                                            <img src="assets/images/instagram/instagram_05.jpg" alt="">
-                                        </div>
-
-
-                                        <div class="instagram-widget__item col-xs-4">
-                                            <img src="assets/images/instagram/instagram_06.jpg" alt="">
-                                        </div>
-
+                                     
 
                                     </div>
                                 </div>
@@ -423,7 +409,7 @@
     <!-- ––––––––––––––––––––––––––––––––––––––––– -->
     <script type="text/javascript" src="/js/main.js"></script>
 
-    @yield('js');
+    @yield('js')
 </body>
 
 </html>

@@ -87,8 +87,8 @@
                                             <img class="pr-10" src="/images/tablet.png" alt="">
                                         </div>
                                         <div class="col-xs-8">
-                                            <h5 class="mb-10 pt-5">Deals & Coupons</h5>
-                                            <p class="color-mid">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur.</p>
+                                            <h5 class="mb-10 pt-5"> Play Games &amp; Win Tokens</h5>
+                                            <p class="color-mid">Visit our Earn section to play and earn tokes through small surveys, games, referals and more.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,8 +100,8 @@
                                             <img class="pr-10" src="/images/online-shop-6.png" alt="">
                                         </div>
                                         <div class="col-xs-8">
-                                            <h5 class="mb-10 pt-5">Find Best Offers</h5>
-                                            <p class="color-mid">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur.</p>
+                                            <h5 class="mb-10 pt-5"> Use Tokens to redeem coupons</h5>
+                                            <p class="color-mid">Tokens earned can be used to redeem different tokens that get you great deals.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -113,8 +113,8 @@
                                             <img class="pr-10" src="/images/money.png" alt="">
                                         </div>
                                         <div class="col-xs-8">
-                                            <h5 class="mb-10 pt-5">Save Money</h5>
-                                            <p class="color-mid">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur.</p>
+                                            <h5 class="mb-10 pt-5"> Shop and Browse by categories</h5>
+                                            <p class="color-mid">We provide you a categorised list of curated websites and apps for the desired purposes..</p>
                                         </div>
                                     </div>
                                 </div>
@@ -278,7 +278,7 @@
                     <section class="section subscribe-area ptb-40 t-center">
                         <div class="newsletter-form">
                             <h4 class="mb-20"><i class="fa fa-envelope-o color-green mr-10"></i>Sign up for our weekly email newsletter</h4>
-                            <p class="mb-20 color-mid">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi animi magni accusantium architecto possimus.</p>
+                            <p class="mb-20 color-mid">Get notified whenever we have some great offers on our platform that fit your needs. Be the first to be at benifit.</p>
                             <form method="post" action="#">
                                 <div class="input-group mb-10">
                                     <input type="email" class="form-control bg-white" placeholder="Email Address" required="required">

@@ -10,25 +10,12 @@
                     <!-- Coupons Area -->
                     <div class="section coupons-area coupons-area-grid">
 
-                        <!-- Page Control -->
-                        <header class="page-control panel ptb-15 prl-20 pos-r mb-30">
-
-                           
-
-                            <div class="right-10 pos-tb-center">
-                                <select class="form-control input-sm">
-                                    <option>SORT BY</option>
-                                    <option>Newest items</option>
-                                    <option>Best sellers</option>
-                                    <option>Best rated</option>
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
-                                </select>
-                            </div>
-                        </header>
                         <!-- End Page Control -->
                         <div class="row row-masnory row-tb-20">
-                          @foreach($coupons as $coupon)
+                          @foreach($coupons as $key => $coupon)
+
+                            
+
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <div  class="coupon-single panel t-center">
                                     

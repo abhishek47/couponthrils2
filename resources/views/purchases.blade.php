@@ -33,6 +33,23 @@
                                     <div class="coupon-single panel t-center">
                                         
                                         <div class="row">
+
+                                             <div class="col-xs-12">
+                                            <div class="text-center p-20">
+                                                <?php $pieces = parse_url($coupon->LINK);
+                                              $domain = isset($pieces['host']) ? $pieces['host'] : '';
+                                              if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+                                                $logo_path = "https://logo.clearbit.com/" . $regs['domain'];
+                                                
+                                              } else {
+                                                 $logo_path = '';
+                                              } ?>
+                                                <img style="width: 120px;margin:0 auto;" class="store-logo" src="{{ $logo_path }}" alt="">
+                                            </div>
+                                            <!-- end media -->
+                                        </div>
+                                        <!-- end col -->
+
                                             
 
                                             <div class="col-xs-12">

@@ -49,29 +49,7 @@
                     <!-- Coupons Area -->
                     <section class="section coupons-area coupons-area-grid">
 
-                        <!-- Page Control -->
-                        <header class="page-control panel ptb-15 prl-20 pos-r mb-30">
-
-                            <!-- List Control View -->
-                            <ul class="list-control-view list-inline">
-                                <li><a href="coupons_list.html"><i class="fa fa-bars"></i></a>
-                                </li>
-                                <li><a href="coupons_grid.html"><i class="fa fa-th"></i></a>
-                                </li>
-                            </ul>
-                            <!-- End List Control View -->
-
-                            <div class="right-10 pos-tb-center">
-                                <select class="form-control input-sm">
-                                    <option>SORT BY</option>
-                                    <option>Newest items</option>
-                                    <option>Best sellers</option>
-                                    <option>Best rated</option>
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
-                                </select>
-                            </div>
-                        </header>
+                      
                         <!-- End Page Control -->
                         <div class="row row-masnory row-tb-20">
                           @foreach($coupons as $coupon)

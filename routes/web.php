@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@index')->name('landing');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/purchases', 'HomeController@purchases')->name('purchases');
 Route::post('/profile', 'HomeController@update')->name('profile.update');
 Route::post('/profile/password', 'HomeController@updatePassword')->name('profile.password');
 

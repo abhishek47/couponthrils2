@@ -23,8 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $coupons = auth()->user()->coupons;
         return view('home', compact('coupons'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function purchases()
+    {
+        $coupons = auth()->user()->coupons;
+        return view('purchases', compact('coupons'));
     }
 
      /**

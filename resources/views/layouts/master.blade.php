@@ -231,15 +231,18 @@
                                     <a href="/stores">Stores</a>
                                     
                                 </li>
-                                <li class="{{ request()->is('contact*') ? 'active' : '' }}">
-                                    <a href="/contact">Contact Us</a>
-                                    
-                                </li>
-
+                                
                                  <li class="{{ request()->is('home*') ? 'active' : '' }}">
                                     <a href="/home">My Account</a>
                                     
                                 </li>
+
+                                @auth
+                                 <li class="{{ request()->is('purchases*') ? 'active' : '' }}">
+                                    <a href="/purchases">Purchases</a>
+                                    
+                                </li>
+                            @endauth
                                 
                             </ul>
                         </div>

@@ -13,7 +13,7 @@
                                 <aside>
                                     <ul class="nav-coupon-category panel">
                                     	@foreach(array_slice($categories, 0, 9) as $category)
-	                                        <li><a href="{{ route('coupons', ['category' => $category->CAT_SLUG ]) }}"><i class="fa fa-list"></i>{{ $category->CAT_NAME }}<span>40</span></a>
+	                                        <li><a href="{{ route('categories', ['categoryId' => $category->CAT_ID, 'category_name' => $category->CAT_NAME ]) }}"><i class="fa fa-list"></i>{{ $category->CAT_NAME }}<span>40</span></a>
 	                                        </li>
                                         @endforeach
                                         
@@ -122,10 +122,33 @@
                         </div>
                     </div>
 
+                      <section class="section stores-area stores-area-v1 ptb-30">
+                        <header class="panel ptb-15 prl-20 pos-r mb-30">
+                            <h3 class="section-title font-18">Popular Stores</h3>
+                            <a href="/stores" class="btn btn-o btn-xs pos-a right-10 pos-tb-center">All Stores</a>
+                        </header>
+                        <div class="popular-stores-slider owl-slider" data-loop="true" data-autoplay="true" data-smart-speed="1000" data-autoplay-timeout="10000" data-margin="20" data-items="2" data-xxs-items="2" data-xs-items="2" data-sm-items="3" data-md-items="5" data-lg-items="6">
+
+                         @foreach($stores as $store)
+                            <div class="store-item t-center">
+                                <a href="/stores/{{$store->STORE_ID}}" class="panel is-block">
+                                    <div class="embed-responsive embed-responsive-4by3">
+                                        <div class="store-logo">
+                                            <img src="{{ $store->STORE_LOGOV2 }}" alt="">
+                                        </div>
+                                    </div>
+                                    <h6 class="store-name ptb-10">{{ $store->STORE_NAME }}</h6>
+                                </a>
+                            </div>
+                          @endforeach  
+                        </div>
+                    </section>
+
+
                     <section class="section latest-deals-area ptb-30">
                         <header class="panel ptb-15 prl-20 pos-r mb-30">
                             <h3 class="section-title font-18">Latest Deals</h3>
-                            <a class="btn btn-o btn-xs pos-a right-10 pos-tb-center">View All</a>
+                            <a href="/deals" class="btn btn-o btn-xs pos-a right-10 pos-tb-center">View All</a>
                         </header>
 
                         <div class="row row-masnory row-tb-20">
@@ -156,9 +179,7 @@
 					                                <i class="fa fa-star-o"></i>
 					                                <i class="fa fa-star-o"></i>
 					                            </span>
-                                                <span class="rating-reviews">
-                                ( <span class="rating-count">241</span> rates )
-                                                </span>
+                                               
                                             </div>
                                             <h3 class="deal-title mb-10">
                             <a href="{{ $deal->LINK }}">{{ substr($deal->TITLE, 0, 50) }}...</a>
@@ -182,7 +203,7 @@
                     <section class="section latest-coupons-area ptb-30">
                         <header class="panel ptb-15 prl-20 pos-r mb-30">
                             <h3 class="section-title font-18">Latest Coupons</h3>
-                            <a class="btn btn-o btn-xs pos-a right-10 pos-tb-center">View All</a>
+                            <a href="/deals" class="btn btn-o btn-xs pos-a right-10 pos-tb-center">View All</a>
                         </header>
 
                         <div class="latest-coupons-slider owl-slider" data-autoplay-hover-pause="true" data-loop="true" data-autoplay="true" data-smart-speed="1000" data-autoplay-timeout="10000" data-margin="30" data-nav-speed="false" data-items="1" data-xxs-items="1" data-xs-items="2" data-sm-items="2" data-md-items="3" data-lg-items="4">
@@ -217,9 +238,9 @@
                                                 <h5 class="deal-title mb-10">
 					                                <a href="#">{{ $coupon->DISCOUNT}}</a>
 					                            </h5>
-                                                <p class="mb-15 color-muted mb-20 font-12"><i class="lnr lnr-clock mr-10"></i>Expires On {{ $coupon->VALIDITY_DATE }}</p>
-                                                <div class="showcode" data-toggle-class="coupon-showen" data-toggle-event="click">
-                                                    <button class="show-code btn btn-sm btn-block" data-toggle="modal" data-target="#coupon_01">Get Coupon Code</button>
+                                                <p class="mb-15 color-muted mb-20 font-12"><i class="fa fa-calendar mr-10"></i>Expires On {{ $coupon->VALIDITY_DATE }}</p>
+                                                <div class="showcode">
+                                                    <button class="show-code btn btn-sm btn-block" data-toggle="modal" data-target="#coupon_{{$coupon->CM_CID}}">Get Coupon Code</button>
                                                     <div class="coupon-hide">{{ $coupon->COUPON }}</div>
                                                 </div>
                                             </div>
@@ -228,31 +249,12 @@
                                     </div>
                                     <!-- end row -->
                                 </div>
+                                
                             </div>
                            @endforeach 	
                         </div>
                     </section>
-                    <section class="section stores-area stores-area-v1 ptb-30">
-                        <header class="panel ptb-15 prl-20 pos-r mb-30">
-                            <h3 class="section-title font-18">Popular Stores</h3>
-                            <a href="stores_01.html" class="btn btn-o btn-xs pos-a right-10 pos-tb-center">All Stores</a>
-                        </header>
-                        <div class="popular-stores-slider owl-slider" data-loop="true" data-autoplay="true" data-smart-speed="1000" data-autoplay-timeout="10000" data-margin="20" data-items="2" data-xxs-items="2" data-xs-items="2" data-sm-items="3" data-md-items="5" data-lg-items="6">
-
-                         @foreach($stores as $store)
-                            <div class="store-item t-center">
-                                <a href="/stores/{{$store->STORE_ID}}" class="panel is-block">
-                                    <div class="embed-responsive embed-responsive-4by3">
-                                        <div class="store-logo">
-                                            <img src="{{ $store->STORE_LOGOV2 }}" alt="">
-                                        </div>
-                                    </div>
-                                    <h6 class="store-name ptb-10">{{ $store->STORE_NAME }}</h6>
-                                </a>
-                            </div>
-                          @endforeach  
-                        </div>
-                    </section>
+                  
 
 
                    
@@ -275,6 +277,68 @@
                     </section>
                 </div>
             </div>
+
+
+
+            @foreach($coupons as $coupon)
+
+            	<div class="modal fade get-coupon-area" tabindex="-1" role="dialog" id="coupon_{{$coupon->CM_CID}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content panel">
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <div class="row row-v-10">
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                        <img src="assets/images/brands/store_logo.jpg" alt="">
+                                                        <h3 class="mb-20">{{ $coupon->TITLE }}</h3>
+                                                        <p class="color-mid">{{ $coupon->DESCRIPTION }}</p>
+                                                    </div>
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                        <a href="{{ $coupon->LINK }}" class="btn btn-link">Visit Our Store</a>
+                                                    </div>
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                        <h6 class="color-mid t-uppercase">Click below to get your coupon code</h6>
+                                                        <a href="#" target="_blank" class="coupon-code">{{ $coupon->COUPON }}</a>
+                                                    </div>
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                        <div class="like-report mb-10">
+                                                            <span>Share this coupon :</span>
+                                                            <ul class="list-inline social-icons social-icons--colored mt-10">
+                                                                <li class="social-icons__item">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                </li>
+                                                                <li class="social-icons__item">
+                                                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                                                </li>
+                                                                <li class="social-icons__item">
+                                                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                                                </li>
+                                                                <li class="social-icons__item">
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer footer-info t-center ptb-40 prl-30">
+                                                <h4 class="mb-15">Subscribe to Mail</h4>
+                                                <p class="color-mid mb-20">Get our Daily email newsletter with Special Services, Updates, Offers and more!</p>
+                                                <form method="post" action="#">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control bg-white" placeholder="Your Email Address" required="required">
+                                                        <span class="input-group-btn">
+                    <button class="btn" type="submit">Sign Up</button>
+                </span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+            @endforeach
 
 
 @endsection

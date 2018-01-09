@@ -9,29 +9,11 @@
                 <div class="container">
                    <section class="store-header-area panel t-xs-center t-sm-left mb-30">
                         <div class="row row-rl-10">
-                            <div class="col-sm-3 col-md-2 t-center">
-                                <figure class="pt-20 pl-10">
-                                    <img src="{{ $storeLogo }}" alt="">
-                                </figure>
-                            </div>
+                            
                             <div class="col-sm-5 col-md-6">
                                 <div class="store-about ptb-30">
-                                    <h3 class="mb-10">{{ $storeName }}</h3>
-                                    <div class="rating mb-10">
-                                        <span class="rating-stars rate-allow" data-rating="3">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o star-active"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </span>
-                                        <span class="rating-reviews">
-                                ( <span class="rating-count">{{ count($coupons) }}</span> offers )
-                                        </span>
-                                    </div>
-                                    <p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio officiis at accusantium ducimus excepturi cumque ad commodi libero nihil rem voluptatibus veniam ipsa ullam esse quia quae fuga, quidem iusto.</p>
-                                    <p class="mb-20">Sunt ea hic nam dicta odit quam obcaecati et accusamus exercitationem fuga earum incidunt tempore iure aperiam?</p>
-                                </div>
+                                    <h3 class="ml-30">{{ $categoryName }}</h3>
+                                 </div>   
                             </div>
                             
                         </div>
@@ -49,29 +31,6 @@
                     <!-- Coupons Area -->
                     <section class="section coupons-area coupons-area-grid">
 
-                        <!-- Page Control -->
-                        <header class="page-control panel ptb-15 prl-20 pos-r mb-30">
-
-                            <!-- List Control View -->
-                            <ul class="list-control-view list-inline">
-                                <li><a href="coupons_list.html"><i class="fa fa-bars"></i></a>
-                                </li>
-                                <li><a href="coupons_grid.html"><i class="fa fa-th"></i></a>
-                                </li>
-                            </ul>
-                            <!-- End List Control View -->
-
-                            <div class="right-10 pos-tb-center">
-                                <select class="form-control input-sm">
-                                    <option>SORT BY</option>
-                                    <option>Newest items</option>
-                                    <option>Best sellers</option>
-                                    <option>Best rated</option>
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
-                                </select>
-                            </div>
-                        </header>
                         <!-- End Page Control -->
                         <div class="row row-masnory row-tb-20">
                           @foreach($coupons as $coupon)
@@ -79,7 +38,21 @@
                                 <div class="coupon-single panel t-center">
                                     
                                     <div class="row">
-                                        
+                                        <div class="col-xs-12">
+                                            <div class="text-center p-20">
+                                                <?php $pieces = parse_url($coupon->LINK);
+                                              $domain = isset($pieces['host']) ? $pieces['host'] : '';
+                                              if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+                                                $logo_path = "https://logo.clearbit.com/" . $regs['domain'];
+                                                
+                                              } else {
+                                                 $logo_path = '';
+                                              } ?>
+                                                <img style="width: 120px;margin:0 auto;" class="store-logo" src="{{ $logo_path }}" alt="">
+                                            </div>
+                                            <!-- end media -->
+                                        </div>
+                                        <!-- end col -->
 
                                         <div class="col-xs-12">
                                             <div class="panel-body">
@@ -160,6 +133,38 @@
                             </div>
                                 @endforeach
                             </div>
+
+
+                             <!-- Page Pagination -->
+                        <div class="page-pagination text-center mt-30 p-10 panel">
+                            <nav>
+                                <!-- Page Pagination -->
+                                <ul class="page-pagination">
+                                    <li><a class="page-numbers previous" href="{{ '/deals?page=' . ($page-1) }}">Previous</a>
+                                    </li>
+
+                                    @for($i = 1; $i <= $pages; $i++)
+                                        @if($i == 11)
+                                         <li><span class="page-numbers dots">.....</span></li> 
+                                        @endif
+                                        @if($i > 10 && $i < $pages-7)
+
+                                        @else
+                                        
+                                        <li><a href="{{ '/deals?page=' . $i }}" class="page-numbers {{ $page == $i ? 'current': '' }}">{{ $i }}</a>
+                                        </li>
+                                        @endif
+                                    @endfor
+                                   
+                                    <li><a href="{{ '/deals?page=' . ($page+1) }}" class="page-numbers next">Next</a>
+                                    </li>
+                                </ul>
+                                <!-- End Page Pagination -->
+                            </nav>
+                        </div>
+                        <!-- End Page Pagination -->
+
+
                         </section>
 
 

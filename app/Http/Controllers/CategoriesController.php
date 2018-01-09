@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CouponsController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,24 +13,7 @@ class CouponsController extends Controller
      */
     public function index()
     {
-       if(request()->has('page') && request('page') > 0)
-       {
-         $page = request('page');
-       } else {
-        $page = 1;
-       }
-
-        $data['coupons'] = 
-            json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/50/". $page . "/json"));
-
-        $data['page'] = $page;
-        
-        $data['totalCoupons'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getCouponCount"));    
-        
-        $data['pages'] = $data['totalCoupons'] / 50;
-        
-        return view('coupons.index', $data);
-
+        //
     }
 
     /**
@@ -62,7 +45,37 @@ class CouponsController extends Controller
      */
     public function show($id)
     {
-        //
+        if(request()->has('page') && request('page') > 0)
+       {
+         $page = request('page');
+       } else {
+        $page = 1;
+       }
+
+       $data['categoryName'] = request('category_name');
+
+        $data['couponsData'] = 
+            json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getBatchCoupons/1000/". $page . "/json"));
+
+        $data['coupons'] = [];
+           
+        foreach ($data['couponsData'] as $key => $coupon) {
+                $cats = explode(',', $coupon->FINAL_CAT_LIST);
+
+                if(array_search($id, $cats)){
+                    $data['coupons'][] = $coupon; 
+                }
+            }    
+
+        $data['page'] = $page;
+        
+        $data['totalCoupons'] = json_decode(file_get_contents("https://www.coupomated.com/apiv3/6c2a-d0b8-bbaf-b9e6/getCouponCount"));    
+        
+        $data['pages'] = $data['totalCoupons'] / 50;
+
+
+
+        return view('categories.show', $data);
     }
 
     /**

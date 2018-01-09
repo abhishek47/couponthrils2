@@ -142,12 +142,12 @@
                     <div class="row row-rl-0 row-tb-20 row-md-cell">
                         <div class="brand col-md-3 t-xs-center t-md-left valign-middle">
                             <a href="#" class="logo">
-                                <img src="images/logo.png" alt="" width="250">
+                                <img src="/images/logo.png" alt="" width="250">
                             </a>
                         </div>
                         <div class="header-search col-md-9">
                             <div class="row row-tb-10 ">
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 col-sm-offset-2">
                                     <form class="search-form">
                                         <div class="input-group">
                                             <input type="text" class="form-control input-lg search-input" placeholder="Enter Keywork Here ..." required="required">
@@ -157,7 +157,6 @@
                                                         <option>Select Your Category</option>
                                                         <option>Deals</option>
                                                         <option>Coupons</option>
-                                                        <option>Discounts</option>
                                                     </select>
                                                     <div class="input-group-btn">
                                                         <button type="submit" class="btn btn-lg btn-search btn-block">
@@ -169,22 +168,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-sm-4 t-xs-center t-md-right">
-                                    <div class="header-cart">
-                                        <a href="cart.html">
-                                            <span class="icon fa fa-shopping-bag"></span>
-                                            <div><span class="cart-number">0</span>
-                                            </div>
-                                            <span class="title">Cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="header-wishlist ml-20">
-                                        <a href="wishlist.html">
-                                            <span class="icon fa fa-heart font-30"></span>
-                                            <span class="title">Wish List</span>
-                                        </a>
-                                    </div>
-                                </div>
+                              
                             </div>
                         </div>
                     </div>

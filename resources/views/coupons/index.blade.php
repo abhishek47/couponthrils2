@@ -65,7 +65,7 @@
                                                 <h5 class="deal-title mb-10">
                                         <a href="#">{{ $coupon->TITLE }}</a>
                                     </h5>
-                                                <p class="mb-15 color-muted mb-20 font-12"><i class="lnr lnr-clock mr-10"></i>Expires On {{ $coupon->VALIDITY_DATE }}</p>
+                                                <p class="mb-15 color-muted mb-20 font-12"><i class="fa fa-calendar mr-10"></i>Expires On {{ $coupon->VALIDITY_DATE }}</p>
                                                 <div class="showcode">
                                                     <button class="show-code btn btn-sm btn-block" data-toggle="modal" data-target="#coupon_{{$coupon->CM_CID}}">Get Coupon Code</button>
                                                     <div class="coupon-hide">{{ $coupon->COUPON }}</div>
@@ -142,12 +142,12 @@
                             <nav>
                                 <!-- Page Pagination -->
                                 <ul class="page-pagination">
-                                    <li><a class="page-numbers previous" href="">Previous</a>
+                                    <li><a class="page-numbers previous" href="{{ '/deals?page=' . ($page-1) }}">Previous</a>
                                     </li>
 
                                     @for($i = 1; $i <= $pages; $i++)
                                         @if($i == 11)
-\                                         <li><span class="page-numbers">...</span></li> 
+                                         <li><span class="page-numbers dots">.....</span></li> 
                                         @endif
                                         @if($i > 10 && $i < $pages-7)
 
@@ -158,7 +158,7 @@
                                         @endif
                                     @endfor
                                    
-                                    <li><a href="" class="page-numbers next">Next</a>
+                                    <li><a href="{{ '/deals?page=' . ($page+1) }}" class="page-numbers next">Next</a>
                                     </li>
                                 </ul>
                                 <!-- End Page Pagination -->

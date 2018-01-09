@@ -115,7 +115,23 @@
                                     <!-- end row -->
                                 </div>
 
-                                <div class="modal fade get-coupon-area" tabindex="-1" role="dialog" id="coupon_{{$coupon->CM_CID}}">
+                                </div>
+                                @endforeach
+                            </div>
+                        </section>
+
+
+                </div>
+
+
+
+                
+            </div>
+            <!-- End Page Container -->
+
+ @if(request()->session()->has('coupon_redeemed'))
+                <?php $coupon = session('coupon_redeemed'); ?>
+                <div class="modal fade get-coupon-area" id="redeem" tabindex="-1" role="dialog" >
                                     <div class="modal-dialog">
                                         <div class="modal-content panel">
                                             <div class="modal-body">
@@ -131,8 +147,13 @@
                                                         <a href="{{ $coupon->LINK }}" class="btn btn-link">Visit Our Store</a>
                                                     </div>
                                                     <div class="col-md-10 col-md-offset-1">
-                                                        <h6 class="color-mid t-uppercase">Click below to get your coupon code</h6>
+                                                      @if($coupon->COUPON != '')
+                                                        <h6 class="color-mid t-uppercase">Get this Offer by using the coupon code below</h6>
                                                         <a href="#" target="_blank" class="coupon-code">{{ $coupon->COUPON }}</a>
+                                                      @else
+                                                        <h6 class="color-mid t-uppercase">Click below to use your offer</h6>
+                                                        <a href="{{ $coupon->LINK }}" target="_blank" class="coupon-code">USE OFFER</a>
+                                                      @endif  
                                                     </div>
                                                     <div class="col-md-10 col-md-offset-1">
                                                         <div class="like-report mb-10">
@@ -162,7 +183,7 @@
                                                     <div class="input-group">
                                                         <input type="text" class="form-control bg-white" placeholder="Your Email Address" required="required">
                                                         <span class="input-group-btn">
-                    <button class="btn" type="submit">Sign Up</button>
+                    <button class="btn" type="submit">Subscribe</button>
                 </span>
                                                     </div>
                                                 </form>
@@ -170,19 +191,74 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                                @endforeach
-                            </div>
-                        </section>
+
+                   @endif
+
+            @foreach($coupons as $coupon)
 
 
-                </div>
-
-
-
+             <!-- Modal -->
+            <div class="modal fade get-coupon-area" id="coupon_{{$coupon->CM_CID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog">
+                                        <div class="modal-content panel">
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <div class="row row-v-10">
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                        <img src="assets/images/brands/store_logo.jpg" alt="">
+                                                        <h3 class="mb-20">{{ $coupon->TITLE }}</h3>
+                                                        <p class="color-mid">{{ $coupon->DESCRIPTION }}</p>
+                                                    </div>
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                        <a href="{{ $coupon->LINK }}" class="btn btn-link">Visit Our Store</a>
+                                                    </div>
+                                                    <div class="col-md-10 col-md-offset-1">
+                                                            <?php preg_match_all('!\d+!', $coupon->DISCOUNT, $matches);
                 
+                                                            $tokens = 5; 
+                                                            
+                                                            if(isset($matches[0][0])) { 
+                                                            if($matches[0][0] <= 20) { $tokens = 100; }
+
+                                                            if($matches[0][0] < 50 && $matches[0][0] > 20) { $tokens = 150; }
+
+                                                            if($matches[0][0] >= 50) { $tokens = 200; } 
+                                                            }  ?>
+                                                        <h6 class="color-mid t-uppercase">Click below to redeem tokens and get coupon</h6>
+                                                        <a href="#"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('redeem-form-{{$coupon->CM_CID}}').submit();"  class="coupon-code">USE {{$tokens}} TOKENS</a>
+
+                                                         <form id="redeem-form-{{$coupon->CM_CID}}" action="/coupons/redeem" 
+                                                            method="POST" style="display: none;">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="coupon" value="{{ json_encode($coupon) }}">
+                                                        </form> 
+                                                     
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
             </div>
-            <!-- End Page Container -->
+
+            
+            @endforeach
+
+
+@endsection
+
+
+@section('js')
+
+    @if(request()->session()->has('coupon_redeemed'))
+     <script type="text/javascript">
+        $('#redeem').modal()
+     </script>
+    @endif 
 
 
 

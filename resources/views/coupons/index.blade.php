@@ -61,6 +61,19 @@
                                                 <ul class="deal-meta list-inline mb-10">
                                                     <li class="color-green"><i class="ico fa fa-check mr-5"></i>Verifed</li>
                                                 </ul>
+
+                                                    <?php preg_match_all('!\d+!', $coupon->DISCOUNT, $matches);
+                
+                                                            $tokens = 5; 
+                                                            
+                                                            if(isset($matches[0][0])) { 
+                                                            if($matches[0][0] <= 20) { $tokens = 100; }
+
+                                                            if($matches[0][0] < 50 && $matches[0][0] > 20) { $tokens = 150; }
+
+                                                            if($matches[0][0] >= 50) { $tokens = 200; } 
+                                                            }  ?>
+                                               <h4 class="mb-10 t-uppercase" style="color: #d84523;font-weight: bold;">{{ $tokens }} tokens</h4>
                                                  
                                                 <h5 class="deal-title mb-10">
                                         <a href="#">{{ $coupon->TITLE }}</a>

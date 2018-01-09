@@ -77,6 +77,44 @@ class CouponsController extends Controller
     }
 
     /**
+     * Redeem a coupon to user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redeem()
+    {
+        $coupon = json_decode(request('coupon'));
+
+        preg_match_all('!\d+!', $coupon->DISCOUNT, $matches);
+            
+        $tokens = 5; 
+        
+        if(isset($matches[0][0])) { 
+        if($matches[0][0] <= 20) { $tokens = 100; }
+
+        if($matches[0][0] < 50 && $matches[0][0] > 20) { $tokens = 150; }
+
+        if($matches[0][0] >= 50) { $tokens = 200; } 
+        } 
+
+        if(auth()->user()->tokens >= $tokens) {
+
+            auth()->user()->tokens = auth()->user()->tokens - $tokens;
+            auth()->user()->save(); 
+
+           // auth()->user()->coupons()->attach($coupon);
+
+            session()->flash('coupon_redeemed' , $coupon);
+
+        } else {
+            //flash("You don't have enough tokens")->error();
+        }
+
+        return back();    
+    }
+
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

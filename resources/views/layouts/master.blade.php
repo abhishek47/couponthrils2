@@ -125,10 +125,22 @@
                                     <a href="#"><i class="fa fa-inr"></i>INR </a>
                                     
                                 </li>
-                                <li><a href="/login"><i class="fa fa-lock"></i>Sign In</a>
-                                </li>
-                                <li><a href="/register"><i class="fa fa-user"></i>Sign Up</a>
-                                </li>
+                                @auth
+                                    <li><a href="/home"><i class="fa fa-user"></i>{{ auth()->user()->name }}</a>
+                                    </li>
+                                    <li><a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                @else
+                                    <li><a href="/login"><i class="fa fa-lock"></i>Sign In</a>
+                                    </li>
+                                    <li><a href="/register"><i class="fa fa-user"></i>Sign Up</a>
+                                    </li>
+                                @endauth
                             </ul>
                         </div>
                     </div>
@@ -147,7 +159,7 @@
                         </div>
                         <div class="header-search col-md-9">
                             <div class="row row-tb-10 ">
-                                <div class="col-sm-8 col-sm-offset-2">
+                                <div class="col-sm-8">
                                     <form class="search-form">
                                         <div class="input-group">
                                             <input type="text" class="form-control input-lg search-input" placeholder="Enter Keywork Here ..." required="required">
@@ -167,6 +179,24 @@
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+
+                                <div class="col-sm-4 t-xs-center t-md-right">
+                                    <div class="header-cart">
+                                        <a href="cart.html">
+                                            <span class="icon fa fa-credit-card"></span>
+                                            <div><span class="cart-number">
+                                             @auth
+                                               {{ auth()->user()->tokens }}
+                                             @else
+                                                0
+                                             @endauth 
+                                             </span>
+                                            </div>
+                                            <span class="title">Tokens</span>
+                                        </a>
+                                    </div>
+                                  
                                 </div>
                               
                             </div>
@@ -392,6 +422,8 @@
     <!-- Custom Template JavaScript                   -->
     <!-- ––––––––––––––––––––––––––––––––––––––––– -->
     <script type="text/javascript" src="/js/main.js"></script>
+
+    @yield('js');
 </body>
 
 </html>

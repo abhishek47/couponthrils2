@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/deals', 'CouponsController@index')->name('coupons');
+Route::post('/coupons/redeem', 'CouponsController@redeem')->name('coupons')->middleware('auth');
 
 Route::get('/stores', 'StoresController@index')->name('stores');
 
